@@ -7,6 +7,10 @@ public class Text {
 
     private List<Sentence> sentences = new ArrayList<Sentence>();
 
+    public Text(List<Sentence> sentences) {
+        this.sentences = sentences;
+    }
+
     public List<Sentence> getSentences() {
         return sentences;
     }

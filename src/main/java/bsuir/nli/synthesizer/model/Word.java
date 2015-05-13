@@ -6,6 +6,7 @@ import java.util.List;
 public class Word {
 
     private String text;
+    private String partOfSpeech;
     private List<Phoneme> phonemes = new ArrayList<Phoneme>();
 
     public Word(String text) {
@@ -37,6 +38,14 @@ public class Word {
         for (Phoneme phoneme : phonemes) {
             result += phoneme.toString();
         }
-        return " " + result + " ";
+        return " " + text + (!"".equals(result) ? " :" + result : "") + " ";
+    }
+
+    public String getPartOfSpeech() {
+        return partOfSpeech;
+    }
+
+    public void setPartOfSpeech(String partOfSpeech) {
+        this.partOfSpeech = partOfSpeech;
     }
 }

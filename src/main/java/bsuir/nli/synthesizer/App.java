@@ -11,7 +11,7 @@ public class App {
     public static void main(String[] args) {
         logger.info("Start");
         Synthesizer synthesizer = new Synthesizer();
-        synthesizer.voiceText("Прывет, сябра!     Как твои дела? У меня все     хорошо.");
-//        synthesizer.voiceFile("src\\main\\resources\\text.txt");
+//        synthesizer.voiceText(" Дзень добры, сябра!     Як справы? У мяне усё добра.");
+        synthesizer.voiceFile("src\\main\\resources\\text.txt");
     }
 }

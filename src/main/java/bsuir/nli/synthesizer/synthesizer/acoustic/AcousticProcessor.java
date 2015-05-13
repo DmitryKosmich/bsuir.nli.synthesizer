@@ -24,21 +24,22 @@ public class AcousticProcessor {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public void process(Text text) {
+        logger.debug("=> process(" + text.toString() + ")");
         Player player = new Player();
         SynthesizerProperties properties = new SynthesizerProperties();
         String phonemePath = properties.getProperty("phonemePath");
         String audioFormat = properties.getProperty("audioFormat");
-        String resultAudioFile = properties.getProperty("resultAudioFile");
+        String resultAudioFile = properties.getProperty("resultAudioFileName");
 
         try {
             List<AudioInputStream> streams = loadPhonemes(text, phonemePath, audioFormat);
             if (streams.size() > 0) {
                 AudioInputStream appendedPhonemes = appendPhonemes(streams);
-                AudioSystem.write(appendedPhonemes, AudioFileFormat.Type.WAVE, new File(resultAudioFile));
-                player.play(resultAudioFile);
+                AudioSystem.write(appendedPhonemes, AudioFileFormat.Type.WAVE, new File(resultAudioFile + audioFormat));
+                player.play(resultAudioFile + audioFormat);
             }
         } catch (Exception e) {
-            logger.error("Load Phomenes", e);
+            logger.error("Load Phonemes", e);
         }
     }
 

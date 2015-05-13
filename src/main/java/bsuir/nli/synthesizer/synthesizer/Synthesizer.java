@@ -5,7 +5,7 @@ import bsuir.nli.synthesizer.services.Reader;
 import bsuir.nli.synthesizer.synthesizer.acoustic.AcousticProcessor;
 import bsuir.nli.synthesizer.synthesizer.intonation.IntonationProcessor;
 import bsuir.nli.synthesizer.synthesizer.phonetic.PhoneticProcessor;
-import bsuir.nli.synthesizer.synthesizer.word.WordProcessor;
+import bsuir.nli.synthesizer.synthesizer.text.TextProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,13 +19,13 @@ public class Synthesizer {
 
     public void voiceText(String text) {
         logger.info("Start");
-        WordProcessor wordProcessor = new WordProcessor();
+        TextProcessor textProcessor = new TextProcessor();
         IntonationProcessor intonationProcessor = new IntonationProcessor();
         PhoneticProcessor phoneticProcessor = new PhoneticProcessor();
         AcousticProcessor acousticProcessor = new AcousticProcessor();
 
-        Text postWordProcessorText = wordProcessor.process(text);
-        Text postIntonationProcessorText = intonationProcessor.process(postWordProcessorText);
+        Text postTextProcessorText = textProcessor.process(text);
+        Text postIntonationProcessorText = intonationProcessor.process(postTextProcessorText);
         Text postPhoneticProcessorText = phoneticProcessor.process(postIntonationProcessorText);
         acousticProcessor.process(postPhoneticProcessorText);
     }
