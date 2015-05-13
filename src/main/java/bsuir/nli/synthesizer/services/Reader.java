@@ -3,9 +3,7 @@ package bsuir.nli.synthesizer.services;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class Reader {
 
@@ -16,7 +14,8 @@ public class Reader {
         StringBuilder sb = new StringBuilder();
 
         try {
-            br = new BufferedReader(new FileReader(path));
+            FileInputStream fis = new FileInputStream(path);
+            br = new BufferedReader(new InputStreamReader(fis, "UTF-8"));
             sb = new StringBuilder();
             String line = br.readLine();
 

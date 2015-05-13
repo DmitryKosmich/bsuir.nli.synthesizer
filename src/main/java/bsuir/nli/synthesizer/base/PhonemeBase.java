@@ -19,7 +19,7 @@ public class PhonemeBase {
 
     static {
         SynthesizerProperties properties = new SynthesizerProperties();
-        String dictionary = Reader.read(properties.getProperty("letterPhoneme"));
+        String dictionary = Reader.read(properties.getProperty("letterPhonemePath"));
         String[] lines = dictionary.split("\\r\\n");
         for (int i = 0; i < lines.length; i++) {
             String[] wordParts = lines[i].split("=");
